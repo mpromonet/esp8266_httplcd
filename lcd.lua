@@ -4,9 +4,8 @@ local moduleName = ...
 local M = {}
 _G[moduleName] = M 
 
-LCD_RW = 0x1
-LCD_RS = 0x2
-LCD_E  = 0x4
+LCD_RS = 0x10
+LCD_E  = 0x20
 
 LCD_LINE_1 = 0x80 
 LCD_LINE_2 = 0xC0
@@ -14,7 +13,6 @@ LCD_WIDTH = 16
 
 local function write_4bits(bits, mode)
 	bits=bit.band(bits,0xf)
-	bits=bit.lshift(bits,3)
 	if (mode) then
 		bits=bit.bor(bits,LCD_RS)
 	end
